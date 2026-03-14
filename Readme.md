@@ -13,8 +13,7 @@ The proposed architecture combines:
 - **LSTM (Long Short-Term Memory):** Captures temporal dependencies in stock price time series.
 - **Graph Convolutional Networks (GCN):** Models structural relationships between stocks using regime-specific correlation matrices.
 - **Learnable graph adjacency: **Learnable matrices enabling regime-aware forecasting with dynamic structure learning
-
-Unlike traditional correlation-based graphs, the workflow first identifies market regimes, constructs **regime-specific graphs**, and then applies learnable graph convolutions, enabling regime-aware forecasting with dynamic structure learning
+- Unlike traditional correlation-based graphs, the workflow first identifies market regimes, constructs **regime-specific graphs**, and then applies learnable graph convolutions, enabling regime-aware forecasting with dynamic structure learning
 ---
 
 ## Data
