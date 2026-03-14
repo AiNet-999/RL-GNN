@@ -18,8 +18,7 @@ returns = np.log(df_70 / df_70.shift(1)).dropna()
 print("Return Matrix Shape:", returns.shape)
 
 market_return = returns.mean(axis=1)
-market_volatility = returns.std(axis=1)
-features = np.column_stack([market_return, market_volatility])
+features = market_return.values.reshape(-1, 1)
 
 hmm = GaussianHMM(
     n_components=3,
@@ -27,6 +26,7 @@ hmm = GaussianHMM(
     n_iter=1000,
     random_state=42
 )
+
 hmm.fit(features)
 hidden_states = hmm.predict(features)
 

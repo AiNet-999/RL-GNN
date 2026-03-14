@@ -103,7 +103,7 @@ model.summary()
 from tensorflow.keras.callbacks import EarlyStopping
 early_stop = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
 
-history = model.fit(train_dataset, epochs=100)
+history = model.fit(train_dataset,  epochs=100,callbacks=[early_stop])
 
 print("\nFinal Training History:")
 print(f"Final Training Loss: {history.history['loss'][-1]:.6f}")
