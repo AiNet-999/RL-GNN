@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-df = pd.read_csv("/content/SZSE_Closing_Prices - Copy.csv", header=None)
+df = pd.read_csv("SZSE_Closing_Prices - Copy.csv", header=None)
 print("Original Shape:", df.shape)
 
 df = df.fillna(method='ffill')

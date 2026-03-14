@@ -21,8 +21,8 @@ for g in gpus:
     except Exception:
         pass
 
-CLOSING_PRICES_PATH = '/kaggle/input/datasets/maryambukhari/szse-data/SZSE_Closing_Prices - Copy.csv'
-CORRELATION_MATRIX_PATH = '/kaggle/input/datasets/maryambukhari/szse-data/adjacency_matrix (1).csv'
+CLOSING_PRICES_PATH = 'SZSE_Closing_Prices - Copy.csv'
+CORRELATION_MATRIX_PATH = 'adjacency_matrix.csv'
 
 closing_prices = pd.read_csv(CLOSING_PRICES_PATH, header=None).fillna(method='ffill').fillna(method='bfill')
 adjacency_matrix_raw = pd.read_csv(CORRELATION_MATRIX_PATH, header=None).to_numpy()

@@ -47,11 +47,23 @@ adjacency_matrix_bear = pd.read_csv('correlation_matrix_bear.csv', header=None).
 adjacency_matrix_bull = pd.read_csv('correlation_matrix_bull.csv', header=None).to_numpy()
 adjacency_matrix_std = pd.read_csv('adjacency_matrix.csv', header=None).to_numpy()
 num_stocks = 50  
-closing_prices = closing_prices.iloc[:, : num_stocks]
-adjacency_matrix_sideways = adjacency_matrix_sideways[:num_stocks, :num_stocks]
-adjacency_matrix_bear = adjacency_matrix_bear [:num_stocks, :num_stocks]
-adjacency_matrix_bull = adjacency_matrix_bull[:num_stocks, :num_stocks]
-adjacency_matrix_std = adjacency_matrix_std[:num_stocks, :num_stocks]
+volatile_idx = [62, 45, 13, 53, 73] # volatile for Szse
+selected_idx = []
+i = 0
+while len(selected_idx) < num_stocks - len(volatile_idx):
+    if i not in volatile_idx:
+        selected_idx.append(i)
+    i += 1
+selected_idx += volatile_idx
+print("Selected indices:", selected_idx)
+print("Total stocks:", len(selected_idx))
+
+closing_prices = closing_prices.iloc[:, selected_idx]
+
+adjacency_matrix_sideways = adjacency_matrix_sideways[selected_idx][:, selected_idx]
+adjacency_matrix_bear = adjacency_matrix_bear[selected_idx][:, selected_idx]
+adjacency_matrix_bull = adjacency_matrix_bull[selected_idx][:, selected_idx]
+adjacency_matrix_std = adjacency_matrix_std[selected_idx][:, selected_idx]
 
 closing_prices = closing_prices.to_numpy()
 num_time_steps = closing_prices.shape[0]

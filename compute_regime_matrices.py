@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 from hmmlearn.hmm import GaussianHMM
 
-df = pd.read_csv("/content/SP500_Closing_Prices-NEW - Copy.csv", header=None)
+df = pd.read_csv("SP500_Closing_Prices-NEW - Copy.csv", header=None)
 print("Original Shape:", df.shape)
 
 df = df.ffill().bfill().fillna(df.mean())
