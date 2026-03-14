@@ -248,7 +248,7 @@ model = keras.models.Model(inputs, outputs)
 model.compile(optimizer=keras.optimizers.Adam(learning_rate=0.001), loss='mse')
 
 from tensorflow.keras.callbacks import EarlyStopping
-early_stop = EarlyStopping(monitor='val_loss', patience=8, restore_best_weights=True)
+early_stop = EarlyStopping(monitor='loss', patience=8, restore_best_weights=True)
 history = model.fit(train_dataset,  epochs=100, callbacks=[early_stop])
 print("\nFinal Training History:")
 print(f"Final Training Loss: {history.history['loss'][-1]}")
